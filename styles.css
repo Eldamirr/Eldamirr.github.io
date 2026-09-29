@@ -347,3 +347,38 @@ body{
   .icon-grid{grid-template-columns:1fr}
   .icon-card{min-height:185px}
 }
+
+
+/* final compact icon showcase */
+.icon-section{
+  display:grid;
+  grid-template-columns:.82fr 1.18fr;
+  gap:42px;
+  align-items:center;
+}
+.icon-grid{display:none!important}
+.icon-showcase-box{
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:18px;
+  min-height:360px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 50% 45%,rgba(196,181,253,.10),transparent 45%),
+    rgba(255,255,255,.025);
+  overflow:hidden;
+}
+.icon-showcase-box img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:470px;
+  object-fit:contain;
+  border-radius:18px;
+}
+@media(max-width:900px){
+  .icon-section{grid-template-columns:1fr}
+  .icon-showcase-box{min-height:0}
+}
