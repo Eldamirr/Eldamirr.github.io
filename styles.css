@@ -406,3 +406,48 @@ body{
   height:auto;
   object-fit:contain;
 }
+
+
+/* individual custom icon files */
+.icon-showcase-box{
+  min-height:360px;
+  padding:28px;
+}
+.individual-icon-grid{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  align-items:stretch;
+}
+.individual-icon{
+  min-height:155px;
+  border:1px solid rgba(255,255,255,.085);
+  border-radius:18px;
+  padding:16px 12px 13px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  background:rgba(255,255,255,.025);
+}
+.individual-icon img{
+  width:96px;
+  height:96px;
+  object-fit:contain;
+  display:block;
+}
+.individual-icon span{
+  color:var(--muted);
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  text-align:center;
+}
+@media(max-width:900px){
+  .individual-icon-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:620px){
+  .individual-icon-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
