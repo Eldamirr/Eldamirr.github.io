@@ -382,3 +382,27 @@ body{
   .icon-section{grid-template-columns:1fr}
   .icon-showcase-box{min-height:0}
 }
+
+
+/* latest icon showcase */
+.icon-grid,.icon-showcase{display:none!important}
+.icon-showcase-box{
+  border:1px solid var(--line);
+  border-radius:28px;
+  min-height:330px;
+  padding:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 50% 45%,rgba(196,181,253,.12),transparent 46%),
+    rgba(255,255,255,.025);
+  overflow:hidden;
+}
+.icon-showcase-box img{
+  display:block;
+  width:100%;
+  max-width:620px;
+  height:auto;
+  object-fit:contain;
+}
