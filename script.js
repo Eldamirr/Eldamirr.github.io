@@ -113,11 +113,13 @@ async function updateDiscordPresence(){
     const res=await fetch("https://api.lanyard.rest/v1/users/"+discordId,{cache:"no-store"});
     if(!res.ok)throw new Error("presence");
     const json=await res.json();
+    if(!json.success || !json.data) throw new Error("presence");
     const d=json.data;
     const user=d.discord_user||{};
-    if(discordName) discordName.textContent=user.username?"@"+user.username:"@caesrov";
+    if(discordName) discordName.textContent="@caesrov";
     if(avatar && user.avatar){
-      avatar.src=`https://cdn.discordapp.com/avatars/${discordId}/${user.avatar}.webp?size=128`;
+      const ext=user.avatar.startsWith("a_")?"gif":"webp";
+      avatar.src=`https://cdn.discordapp.com/avatars/${discordId}/${user.avatar}.${ext}?size=128`;
     }
     const state=d.discord_status||"offline";
     if(statusText) statusText.textContent=statusLabels[state]||"Offline";
@@ -128,7 +130,7 @@ async function updateDiscordPresence(){
   }
 }
 updateDiscordPresence();
-setInterval(updateDiscordPresence,60000);
+setInterval(updateDiscordPresence,30000);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)updateDiscordPresence()});
 
 if(new URLSearchParams(location.search).get("sent")==="1"){
