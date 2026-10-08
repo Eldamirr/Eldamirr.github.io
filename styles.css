@@ -282,3 +282,13 @@ a.server-card:hover .server-top b{transform:translate(2px,-2px)}
   .page-intro{display:none}
   .reveal{opacity:1;transform:none}
 }
+.sent-toast{
+  position:fixed;left:50%;bottom:24px;z-index:120;
+  transform:translate(-50%,18px);opacity:0;
+  padding:12px 17px;border:1px solid rgba(205,184,255,.24);
+  border-radius:999px;background:rgba(20,16,28,.94);
+  backdrop-filter:blur(16px);color:#f7f5fb;font-size:12px;
+  box-shadow:0 16px 50px rgba(0,0,0,.35);
+  transition:.3s ease;
+}
+.sent-toast.show{transform:translate(-50%,0);opacity:1}
