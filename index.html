@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Eldamir — experienced Community Manager and Operations Lead.">
+<meta name="theme-color" content="#09070e">
+<meta name="description" content="Eldamir — Community Manager, Operations Lead and Game Scout.">
 <title>Eldamir — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,259 +12,228 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div id="page-intro" class="page-intro" aria-hidden="true">
+  <div class="intro-inner">
+    <div class="intro-word">eldamir<span>.</span></div>
+    <div class="intro-status"><span>LOADING PORTFOLIO</span><b id="intro-count">0%</b></div>
+    <div class="intro-line"><i id="intro-bar"></i></div>
+  </div>
+</div>
+
+<div class="scroll-progress" aria-hidden="true"><i id="scroll-progress-bar"></i></div>
+
 <header class="topbar">
   <nav class="shell nav">
-    <a class="brand" href="#top">eldamir.</a>
+    <a class="brand" href="#top">eldamir<span>.</span></a>
     <div class="navlinks">
       <a href="#about">about</a>
-      <a href="#servers">servers</a>
+      <a href="#servers">experience</a>
       <a href="#icons">icons</a>
       <a href="#contact">contact</a>
     </div>
-    <a class="discord-mini" href="https://discord.com/users/1019613116209823874" target="_blank" rel="noreferrer">@caesrov ↗</a>
+    <div class="nav-right">
+      <a class="discord-mini" href="https://discord.com/users/1019613116209823874" target="_blank" rel="noreferrer">Discord ↗</a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
   </nav>
 </header>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu-inner shell">
+    <a href="#about">About</a>
+    <a href="#servers">Experience</a>
+    <a href="#icons">Icons</a>
+    <a href="#contact">Contact</a>
+    <a href="https://discord.com/users/1019613116209823874" target="_blank" rel="noreferrer">@caesrov ↗</a>
+  </div>
+</div>
 
 <main id="top">
   <section class="hero shell">
     <div class="hero-main reveal">
-      <p class="eyebrow">COMMUNITY MANAGEMENT · OPERATIONS</p>
-      <h1>Experienced<br>community manager.</h1>
-      <p class="hero-text">I’m Eldamir — a Community Manager and Operations Lead focused on building organized Discord communities, strong staff systems, clean server structures, applications, tickets, permissions, guidelines, moderation workflows, and scalable internal operations.</p>
+      <p class="eyebrow">COMMUNITY MANAGEMENT · OPERATIONS · GAME SCOUTING</p>
+      <h1>Building communities<br><span>made to last.</span></h1>
+      <p class="hero-text">I’m Eldamir — a Community Manager and Operations Lead focused on organized Discord communities, strong staff systems, clean server structure and scalable internal operations.</p>
       <div class="hero-links">
-        <a href="#servers">view servers ↓</a>
-        <a href="https://discord.com/users/1019613116209823874" target="_blank" rel="noreferrer">discord ↗</a>
+        <a class="pill primary" href="#servers">Explore my work <span>↓</span></a>
+        <a class="pill" href="https://discord.com/users/1019613116209823874" target="_blank" rel="noreferrer">@caesrov ↗</a>
       </div>
     </div>
 
     <a class="big-project reveal delay" href="https://discord.gg/d6sK3HXKN" target="_blank" rel="noreferrer">
-      <div class="big-head"><span>BIGGEST PROJECT</span><span class="live">● ACTIVE</span></div>
-      <div class="big-title">Kaizen</div>
-      <div class="big-role">Community Manager · Leadership</div>
-      <p>Working with senior leadership in a 160,000+ member community, overseeing staff matters, escalations, and multiple departments.</p>
-      <div class="big-stats"><span><b>160K+</b> members</span><span><b>300+</b> tickets handled</span></div>
-      <div class="big-arrow">Open server ↗</div>
+      <div class="project-glow"></div>
+      <div class="big-head"><span>BIGGEST PROJECT</span><span class="live"><i></i> ACTIVE</span></div>
+      <div class="big-center">
+        <span class="project-overline">COMMUNITY MANAGER</span>
+        <div class="big-title">Kaizen<span>.</span></div>
+        <p>Working with senior leadership in a 160,000+ member community, overseeing staff matters, escalations and multiple departments.</p>
+      </div>
+      <div class="big-stats">
+        <span><b>160K+</b><small>members</small></span>
+        <span><b>300+</b><small>tickets handled</small></span>
+      </div>
+      <div class="big-arrow">Open community <b>↗</b></div>
     </a>
   </section>
 
-  <section id="about" class="section shell reveal">
-    
-    <div class="about-copy">
-      <h2>I build systems that keep communities running.</h2>
-      <p>I work across Discord communities and Roblox projects, usually in Community Management or Operations Lead positions. My work includes server design, roles, permissions, staff organization, ticket systems, applications, internal guidelines, moderation support and department workflows.</p>
-      <p>I focus on making servers easier to manage, clearer for staff, and ready to scale as the project grows.</p>
+  <section id="about" class="section shell about-section">
+    <div class="about-lead reveal">
+      <p class="eyebrow">ABOUT</p>
+      <h2>I build systems that keep communities running<span>.</span></h2>
+    </div>
+    <div class="about-copy reveal delay">
+      <p>I work across Discord communities and Roblox projects in Community Management, Operations and Game Scouting. My work covers server design, roles, permissions, staff organization, ticket systems, applications, guidelines, moderation support and department workflows.</p>
+      <p>I focus on making communities easier to manage, clearer for staff and ready to scale as the project grows.</p>
     </div>
   </section>
 
-  <section id="servers" class="section shell">
-  <div class="section-title reveal">
-    
-    <div>
+  <section class="impact-section">
+    <div class="marquee-shell">
+      <p class="marquee-label">COMMUNITIES I’VE HELPED WITH</p>
+      <div class="marquee" aria-label="Communities Eldamir has worked with">
+        <div class="marquee-track">
+          <span>Kaizen</span><i>•</i><span>HUNTERS</span><i>•</i><span>Void Studio Productions</span><i>•</i><span>Show Your Control</span><i>•</i><span>Zephyr</span><i>•</i><span>BlobQuest</span><i>•</i><span>OpenDev</span><i>•</i><span>Case Paradise</span><i>•</i><span>Superial Studio</span><i>•</i><span>Kaizen</span><i>•</i><span>HUNTERS</span><i>•</i><span>Void Studio Productions</span><i>•</i><span>Show Your Control</span><i>•</i><span>Zephyr</span><i>•</i><span>BlobQuest</span><i>•</i><span>OpenDev</span><i>•</i><span>Case Paradise</span><i>•</i><span>Superial Studio</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="shell stats-grid">
+      <div class="stat reveal"><strong data-count="215" data-suffix="K+">0</strong><span>community members across projects</span></div>
+      <div class="stat reveal delay"><strong data-count="160" data-suffix="K+">0</strong><span>members at Kaizen</span></div>
+      <div class="stat reveal"><strong data-count="300" data-suffix="+">0</strong><span>support tickets personally handled</span></div>
+      <div class="stat reveal delay"><strong data-count="12" data-suffix="">0</strong><span>communities & projects worked on</span></div>
+    </div>
+  </section>
+
+  <section id="servers" class="section shell experience-section">
+    <div class="section-title reveal">
       <p class="eyebrow">EXPERIENCE</p>
-      <h2>Communities.</h2>
+      <h2>Communities<span>.</span></h2>
       <p>Current roles first, previous experience underneath.</p>
     </div>
-  </div>
 
-  <div class="experience-group current-group">
-    <div class="group-head reveal">
-      <div>
-        <span class="group-kicker">CURRENT</span>
-        <h3>Active communities & roles</h3>
+    <div class="experience-group current-group">
+      <div class="group-head reveal">
+        <div><span class="group-kicker">CURRENT</span><h3>Active communities & roles</h3></div>
+        <span class="group-note">Linked cards open their Discord server.</span>
       </div>
-      <span class="group-note">Linked cards open their Discord server.</span>
-    </div>
 
-    <div class="current-grid">
-      <a class="server-card reveal" href="https://discord.gg/d6sK3HXKN" target="_blank" rel="noreferrer">
-        <div class="server-top"><span>COMMUNITY MANAGER · LEADERSHIP</span></div>
-        <div class="server-body"><h3>Kaizen</h3><p>I work with senior leadership to oversee staff, support the Moderation, Support, Event, Trello and Testing departments, and handle escalated tickets, appeals and community concerns. Before becoming Community Manager, I served as Support Staff and personally handled over 300 tickets.</p><div class="server-foot"><span>160,000+ members</span><span class="arrow">↗</span></div></div>
-      </a>
+      <div class="current-grid">
+        <a class="server-card reveal" href="https://discord.gg/d6sK3HXKN" target="_blank" rel="noreferrer">
+          <div class="server-top"><span>COMMUNITY MANAGER · LEADERSHIP</span><b>↗</b></div>
+          <div class="server-body"><h3>Kaizen</h3><p>I work with senior leadership to oversee staff, support the Moderation, Support, Event, Trello and Testing departments, and handle escalated tickets, appeals and community concerns. Before becoming Community Manager, I served as Support Staff and personally handled over 300 tickets.</p><div class="server-foot"><span>160,000+ members</span></div></div>
+        </a>
 
-      <a class="server-card reveal" href="https://discord.gg/pxKNdFr37" target="_blank" rel="noreferrer">
-        <div class="server-top"><span>OPERATIONS LEAD</span></div>
-        <div class="server-body"><h3>Void Studio Productions</h3><p>I help oversee community operations and internal structure, including staff teams, departments, roles, permissions, bots, server channels and internal systems while supporting general server affairs and keeping the project organized.</p><div class="server-foot"><span>Roblox Studio</span><span class="arrow">↗</span></div></div>
-      </a>
+        <a class="server-card reveal" href="https://discord.gg/hntrs" target="_blank" rel="noreferrer">
+          <div class="server-top"><span>COMMUNITY MANAGER</span><b>↗</b></div>
+          <div class="server-body"><h3>HUNTERS</h3><p>I’m the Community Manager for HUNTERS, a new Roblox game still partly in development. I oversee the server, staff organization and community operations alongside the Operations Lead, while also providing custom server icons and helping shape the server’s overall presentation and structure.</p><div class="server-foot"><span>Roblox Game · In Development</span></div></div>
+        </a>
 
-      <a class="server-card reveal" href="https://discord.gg/9U44vkP3q" target="_blank" rel="noreferrer">
-        <div class="server-top"><span>OPERATIONS LEAD</span></div>
-        <div class="server-body"><h3>Show Your Control</h3><p>I oversee the server’s structure, staff systems and departments while supporting moderation, support, testing, content and event teams as the community prepares for launch.</p><div class="server-foot"><span>Roblox Battlegrounds</span><span class="arrow">↗</span></div></div>
-      </a>
+        <a class="server-card reveal" href="https://discord.gg/pxKNdFr37" target="_blank" rel="noreferrer">
+          <div class="server-top"><span>OPERATIONS LEAD</span><b>↗</b></div>
+          <div class="server-body"><h3>Void Studio Productions</h3><p>I help oversee community operations and internal structure, including staff teams, departments, roles, permissions, bots, server channels and internal systems while supporting general server affairs and keeping the project organized.</p><div class="server-foot"><span>Roblox Studio</span></div></div>
+        </a>
 
-      <a class="server-card reveal" href="https://discord.gg/hntrs" target="_blank" rel="noreferrer">
-        <div class="server-top"><span>COMMUNITY MANAGER</span></div>
-        <div class="server-body"><h3>HUNTERS</h3><p>I’m the Community Manager for HUNTERS, a new Roblox game that is still partly in development. I help oversee the server, staff organization and day-to-day community operations alongside the Operations Lead, while also providing custom server icons and helping shape the server’s overall presentation and structure.</p><div class="server-foot"><span>Roblox Game · In Development</span><span class="arrow">↗</span></div></div>
-      </a>
+        <a class="server-card reveal" href="https://discord.gg/9U44vkP3q" target="_blank" rel="noreferrer">
+          <div class="server-top"><span>OPERATIONS LEAD</span><b>↗</b></div>
+          <div class="server-body"><h3>Show Your Control</h3><p>I oversee the server’s structure, staff systems and departments while supporting moderation, support, testing, content and event teams as the community prepares for launch.</p><div class="server-foot"><span>Roblox Battlegrounds</span></div></div>
+        </a>
 
-      <article class="server-card reveal">
-        <div class="server-top"><span>COMMUNITY MANAGER</span></div>
-        <div class="server-body"><h3>Zephyr</h3><p>I’m the Community Manager for Zephyr, helping oversee the community’s structure, staff organization, bots and general server operations while supporting the team and keeping the server organized.</p><div class="server-foot"><span>Community Management</span></div></div>
-      </article>
+        <article class="server-card reveal">
+          <div class="server-top"><span>COMMUNITY MANAGER</span></div>
+          <div class="server-body"><h3>Zephyr</h3><p>I’m the Community Manager for Zephyr, helping oversee the community’s structure, staff organization, bots and general server operations while supporting the team and keeping the server organized.</p><div class="server-foot"><span>Community Management</span></div></div>
+        </article>
 
-      <article class="server-card reveal">
-        <div class="server-top"><span>GAME SCOUT</span></div>
-        <div class="server-body"><h3>OpenDev</h3><p>I work as a Game Scout for OpenDev, a studio actively looking for promising games to acquire, invest in or partner with. I help identify projects with strong potential and bring suitable opportunities to the studio for consideration.</p><div class="server-foot"><span>Game Scouting · Studio Partnerships</span></div></div>
-      </article>
+        <article class="server-card reveal">
+          <div class="server-top"><span>GAME SCOUT</span></div>
+          <div class="server-body"><h3>OpenDev</h3><p>I work as a Game Scout for OpenDev, a studio actively looking for promising games to acquire, invest in or partner with. I help identify projects with strong potential and bring suitable opportunities to the studio for consideration.</p><div class="server-foot"><span>Game Scouting · Studio Partnerships</span></div></div>
+        </article>
 
-      <a class="server-card reveal" href="https://discord.gg/R6zWyb2Ct" target="_blank" rel="noreferrer">
-        <div class="server-top"><span>OPERATIONS LEAD</span></div>
-        <div class="server-body"><h3>BlobQuest</h3><p>I’m the Operations Lead for BlobQuest, an upcoming Roblox game. I lead the server’s overall operations and structure, including staff management, bots, roles, permissions, internal systems, departments and day-to-day organization while helping prepare the community for the game’s release.</p><div class="server-foot"><span>Roblox Game · Operations</span><span class="arrow">↗</span></div></div>
-      </a>
-    </div>
-  </div>
-
-  <div class="experience-group retired-group">
-    <div class="group-head reveal">
-      <div>
-        <span class="group-kicker retired-kicker">PREVIOUS</span>
-        <h3>Retired experience</h3>
+        <a class="server-card reveal" href="https://discord.gg/R6zWyb2Ct" target="_blank" rel="noreferrer">
+          <div class="server-top"><span>OPERATIONS LEAD</span><b>↗</b></div>
+          <div class="server-body"><h3>BlobQuest</h3><p>I’m the Operations Lead for BlobQuest, an upcoming Roblox game. I lead the server’s overall operations and structure, including staff management, bots, roles, permissions, internal systems, departments and day-to-day organization while helping prepare the community for release.</p><div class="server-foot"><span>Roblox Game · Operations</span></div></div>
+        </a>
       </div>
-      <span class="group-note">Past roles — no server links.</span>
     </div>
 
-    <div class="retired-list">
-      <article class="retired-card reveal">
-        <div class="retired-main"><div class="retired-title-row"><h4>Superial Studio</h4><span>Operations Lead</span></div><p>I previously served as Operations Lead, overseeing staff, departments, bots, roles, permissions, server structure and internal systems. I retired from the project because ownership’s approach did not align with my work ethic and the way I prefer to operate.</p></div>
-        <span class="retired-badge">RETIRED</span>
-      </article>
-      <article class="retired-card reveal">
-        <div class="retired-main"><div class="retired-title-row"><h4>Case Paradise</h4><span>HR · Event Department Manager · Moderator · Support</span></div><p>I previously worked in HR and served as Event Department Manager for a 30,000+ member community. I led the event team, coordinated community events and staff matters, and also served as Moderator and Support Staff.</p></div>
-        <span class="retired-badge">RETIRED</span>
-      </article>
-      <article class="retired-card reveal">
-        <div class="retired-main"><div class="retired-title-row"><h4>Lunar Labs</h4><span>Leadership Team</span></div><p>I previously handled staff matters, bot operations and server systems, with a focus on internal organization and staff affairs.</p></div>
-        <span class="retired-badge">RETIRED</span>
-      </article>
-
-      <article class="retired-card reveal">
-        <div class="retired-main"><div class="retired-title-row"><h4>Beer World</h4><span>Moderator · 50,000+ members</span></div><p>I handled rule violations, assisted members and worked with the staff team to help keep the community organized and welcoming.</p></div>
-        <span class="retired-badge">RETIRED</span>
-      </article>
-
-      <article class="retired-card reveal">
-        <div class="retired-main"><div class="retired-title-row"><h4>Pet Haven</h4><span>Administrator</span></div><p>I previously helped oversee the community, staff team, moderation and general server organization before the project was discontinued.</p></div>
-        <span class="retired-badge">RETIRED</span>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="icons" class="section shell icon-section">
-  <div class="icon-copy reveal">
-    <p class="eyebrow">ICON DESIGN</p>
-    <h2>Custom icons, drawn by me.</h2>
-    <p>I draw custom icons for Discord roles, departments, staff ranks and community systems. I also create custom designs for other servers, matching their colors, style and purpose instead of using generic premade assets.</p>
-    <p class="copyright-note"><strong>Original work.</strong> The designs shown here are my own work and are owned by me. © Eldamir. They may not be copied, redistributed, sold or claimed as someone else’s work without my permission.</p>
-  </div>
-
-  <div class="icon-showcase-box reveal delay">
-    <div class="individual-icon-grid">
-      <div class="individual-icon"><img src="assets/icon-co-owner.webp" alt="Co-Owner custom icon"><span>Co-Owner</span></div>
-      <div class="individual-icon"><img src="assets/icon-head-moderator.webp" alt="Head Moderator custom icon"><span>Head Moderator</span></div>
-      <div class="individual-icon"><img src="assets/icon-concept-team.webp" alt="Concept Team custom icon"><span>Concept Team</span></div>
-      <div class="individual-icon"><img src="assets/icon-producer.webp" alt="Producer custom icon"><span>Producer</span></div>
-      <div class="individual-icon"><img src="assets/icon-lead-qa.webp" alt="Lead QA custom icon"><span>Lead QA</span></div>
-      <div class="individual-icon"><img src="assets/icon-feline-chatter.webp" alt="Feline Chatter custom icon"><span>Feline Chatter</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="section shell skills-section reveal">
-    
-    <div class="skills-wrap">
-      <p class="eyebrow">WHAT I WORK ON</p>
-      <div class="skills-grid">
-        <div><b>Server Design</b><span>roles · channels · permissions</span></div>
-        <div><b>Staff Operations</b><span>departments · workflows · structure</span></div>
-        <div><b>Tickets & Applications</b><span>support · recruitment · routing</span></div>
-        <div><b>Guidelines</b><span>staff docs · internal standards</span></div>
-        <div><b>Moderation Support</b><span>appeals · escalations · concerns</span></div>
-        <div><b>Community Management</b><span>organization · activity · growth</span></div>
+    <div class="experience-group retired-group">
+      <div class="group-head reveal">
+        <div><span class="group-kicker retired-kicker">PREVIOUS</span><h3>Retired experience</h3></div>
+        <span class="group-note">Past roles — no server links.</span>
       </div>
+
+      <div class="retired-list">
+        <article class="retired-card reveal"><div class="retired-main"><div class="retired-title-row"><h4>Superial Studio</h4><span>Operations Lead</span></div><p>I previously served as Operations Lead, overseeing staff, departments, bots, roles, permissions, server structure and internal systems. I retired because ownership’s approach did not align with my work ethic and the way I prefer to operate.</p></div><span class="retired-badge">RETIRED</span></article>
+        <article class="retired-card reveal"><div class="retired-main"><div class="retired-title-row"><h4>Case Paradise</h4><span>HR · Event Department Manager · Moderator · Support</span></div><p>I previously worked in HR and served as Event Department Manager for a 30,000+ member community. I led the event team, coordinated community events and staff matters, and also served as Moderator and Support Staff.</p></div><span class="retired-badge">RETIRED</span></article>
+        <article class="retired-card reveal"><div class="retired-main"><div class="retired-title-row"><h4>Lunar Labs</h4><span>Leadership Team</span></div><p>I previously handled staff matters, bot operations and server systems, with a focus on internal organization and staff affairs.</p></div><span class="retired-badge">RETIRED</span></article>
+        <article class="retired-card reveal"><div class="retired-main"><div class="retired-title-row"><h4>Beer World</h4><span>Moderator · 50,000+ members</span></div><p>I handled rule violations, assisted members and worked with the staff team to help keep the community organized and welcoming.</p></div><span class="retired-badge">RETIRED</span></article>
+        <article class="retired-card reveal"><div class="retired-main"><div class="retired-title-row"><h4>Pet Haven</h4><span>Administrator</span></div><p>I previously helped oversee the community, staff team, moderation and general server organization before the project was discontinued.</p></div><span class="retired-badge">RETIRED</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="icons" class="section shell icon-section">
+    <div class="icon-copy reveal">
+      <p class="eyebrow">ICON DESIGN</p>
+      <h2>Custom icons,<br>drawn by me<span>.</span></h2>
+      <p>I draw custom icons for Discord roles, departments, staff ranks and community systems. I also create designs for other servers, matching their colors, style and purpose instead of using generic premade assets.</p>
+      <p class="copyright-note"><strong>Original work.</strong> The designs shown here are my own work and are owned by me. © Eldamir. They may not be copied, redistributed, sold or claimed as someone else’s work without my permission.</p>
+    </div>
+
+    <div class="icon-showcase-box reveal delay">
+      <div class="individual-icon-grid">
+        <div class="individual-icon"><img src="assets/icon-co-owner.webp" alt="Co-Owner custom icon"><span>Co-Owner</span></div>
+        <div class="individual-icon"><img src="assets/icon-head-moderator.webp" alt="Head Moderator custom icon"><span>Head Moderator</span></div>
+        <div class="individual-icon"><img src="assets/icon-concept-team.webp" alt="Concept Team custom icon"><span>Concept Team</span></div>
+        <div class="individual-icon"><img src="assets/icon-producer.webp" alt="Producer custom icon"><span>Producer</span></div>
+        <div class="individual-icon"><img src="assets/icon-lead-qa.webp" alt="Lead QA custom icon"><span>Lead QA</span></div>
+        <div class="individual-icon"><img src="assets/icon-feline-chatter.webp" alt="Feline Chatter custom icon"><span>Feline Chatter</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell skills-section reveal">
+    <p class="eyebrow">WHAT I WORK ON</p>
+    <div class="skills-grid">
+      <div><b>Server Design</b><span>roles · channels · permissions</span></div>
+      <div><b>Staff Operations</b><span>departments · workflows · structure</span></div>
+      <div><b>Tickets & Applications</b><span>support · recruitment · routing</span></div>
+      <div><b>Guidelines</b><span>staff docs · internal standards</span></div>
+      <div><b>Moderation Support</b><span>appeals · escalations · concerns</span></div>
+      <div><b>Community Management</b><span>organization · activity · growth</span></div>
     </div>
   </section>
 
   <section id="contact" class="section shell contact reveal">
-  <div class="contact-hero">
-    <p class="eyebrow">CONTACT</p>
-    <h2>Want to work together?</h2>
-    <p>Send me a project request below. It goes directly to my email, or you can contact me through Discord.</p>
+    <div class="contact-hero">
+      <p class="eyebrow">CONTACT</p>
+      <h2>Want to work<br>together<span>?</span></h2>
+      <p>Send me a project request below. It goes directly to my email, or contact me through Discord.</p>
 
-    <form class="work-form" action="https://formsubmit.co/eldamirwork@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="New portfolio work request">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://eldamirr.github.io/?sent=1#contact">
+      <form class="work-form" action="https://formsubmit.co/eldamirwork@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New portfolio work request">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://eldamirr.github.io/?sent=1#contact">
+        <div class="form-grid">
+          <label><span>Name / Discord username</span><input type="text" name="Name" placeholder="Your name or Discord username" required></label>
+          <label><span>Email</span><input type="email" name="Email" placeholder="you@example.com" required></label>
+          <label><span>What do you need?</span><select name="Service" required><option value="" selected disabled>Select a service</option><option>Community Management</option><option>Discord Server Setup</option><option>Staff / Department Systems</option><option>Custom Icon Design</option><option>Game Scouting / Partnership</option><option>Other</option></select></label>
+          <label><span>Server / project name</span><input type="text" name="Project" placeholder="Project or community name"></label>
+          <label><span>Server size</span><input type="text" name="Server size" placeholder="e.g. 2,500 members"></label>
+          <label><span>Budget <em>optional</em></span><input type="text" name="Budget" placeholder="Your budget"></label>
+          <label class="form-wide"><span>Tell me what you need</span><textarea name="Message" rows="6" placeholder="Describe the project, what you need help with, your timeline, and anything else I should know." required></textarea></label>
+        </div>
+        <div class="form-bottom"><p>Your request will be sent to <strong>eldamirwork@gmail.com</strong>.</p><button type="submit">Send request ↗</button></div>
+      </form>
 
-      <div class="form-grid">
-        <label>
-          <span>Name / Discord username</span>
-          <input type="text" name="Name" placeholder="Your name or Discord username" required>
-        </label>
-
-        <label>
-          <span>Email</span>
-          <input type="email" name="Email" placeholder="you@example.com" required>
-        </label>
-
-        <label>
-          <span>What do you need?</span>
-          <select name="Service" required>
-            <option value="" selected disabled>Select a service</option>
-            <option>Community Management</option>
-            <option>Discord Server Setup</option>
-            <option>Staff / Department Systems</option>
-            <option>Custom Icon Design</option>
-            <option>Other</option>
-          </select>
-        </label>
-
-        <label>
-          <span>Server / project name</span>
-          <input type="text" name="Project" placeholder="Project or community name">
-        </label>
-
-        <label>
-          <span>Server size</span>
-          <input type="text" name="Server size" placeholder="e.g. 2,500 members">
-        </label>
-
-        <label>
-          <span>Budget <em>optional</em></span>
-          <input type="text" name="Budget" placeholder="Your budget">
-        </label>
-
-        <label class="form-wide">
-          <span>Tell me what you need</span>
-          <textarea name="Message" rows="6" placeholder="Describe the project, what you need help with, your timeline, and anything else I should know." required></textarea>
-        </label>
+      <div class="contact-actions">
+        <a class="contact-primary" href="https://discord.com/users/1019613116209823874" target="_blank" rel="noreferrer"><span>Discord</span><strong>@caesrov</strong><b>↗</b></a>
+        <a class="contact-secondary" href="mailto:eldamirwork@gmail.com"><span>Email</span><strong>eldamirwork@gmail.com</strong><b>↗</b></a>
+        <a class="contact-secondary" href="https://github.com/Eldamirr" target="_blank" rel="noreferrer"><span>GitHub</span><strong>@Eldamirr</strong><b>↗</b></a>
       </div>
-
-      <div class="form-bottom">
-        <p>Your request will be sent to <strong>eldamirwork@gmail.com</strong>.</p>
-        <button type="submit">Send request ↗</button>
-      </div>
-    </form>
-
-    <div class="contact-actions">
-      <a class="contact-primary" href="https://discord.com/users/1019613116209823874" target="_blank" rel="noreferrer">
-        <span>Discord</span>
-        <strong>@caesrov</strong>
-        <b>↗</b>
-      </a>
-      <a class="contact-secondary" href="mailto:eldamirwork@gmail.com">
-        <span>Email</span>
-        <strong>eldamirwork@gmail.com</strong>
-        <b>↗</b>
-      </a>
-      <a class="contact-secondary" href="https://github.com/Eldamirr" target="_blank" rel="noreferrer">
-        <span>GitHub</span>
-        <strong>@Eldamirr</strong>
-        <b>↗</b>
-      </a>
     </div>
-  </div>
-</section>
+  </section>
 </main>
 
 <footer class="shell footer"><span>© <span id="year"></span> Eldamir</span><span>Community · Operations · Systems</span></footer>
