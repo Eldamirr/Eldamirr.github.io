@@ -737,3 +737,103 @@ body::after{display:none!important}
 @media(max-width:650px){
   .server-card:hover,.individual-icon:hover,.big-project:hover{transform:none!important}
 }
+
+
+/* reference-style Discord presence pill */
+.hero-main .discord-presence{
+  width:max-content;
+  max-width:100%;
+  margin:0 0 28px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:7px 11px 7px 7px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:999px;
+  background:rgba(255,255,255,.025);
+  box-shadow:none;
+}
+.avatar-wrap{
+  position:relative;
+  width:34px;
+  height:34px;
+  flex:0 0 34px;
+}
+.discord-presence img{
+  width:34px!important;
+  height:34px!important;
+  display:block;
+  border-radius:50%;
+  object-fit:cover;
+  border:1px solid rgba(255,255,255,.09);
+  background:#15121d;
+}
+.avatar-wrap #discord-status-dot{
+  position:absolute;
+  right:-1px;
+  bottom:-1px;
+  width:10px;
+  height:10px;
+  border:2px solid #0b0810;
+  border-radius:50%;
+  margin:0;
+  box-shadow:none!important;
+}
+.discord-presence-copy{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  min-width:0;
+}
+.discord-presence-copy strong{
+  font-size:11px;
+  line-height:1.1;
+  font-weight:700;
+}
+.discord-presence-copy>span{
+  margin:0;
+  display:block;
+  font-size:9px;
+  color:var(--faint);
+  line-height:1.1;
+}
+.discord-presence-copy b{font-weight:500}
+.discord-presence em{display:none!important}
+
+/* image-only icon gallery */
+.individual-icon{
+  min-height:148px!important;
+  padding:18px!important;
+  display:grid!important;
+  place-items:center!important;
+}
+.individual-icon img{
+  width:min(112px,78%)!important;
+  height:auto!important;
+  max-height:112px!important;
+  object-fit:contain;
+}
+.individual-icon span{display:none!important}
+
+/* smoother but lightweight motion */
+html{scroll-behavior:smooth}
+.reveal{
+  opacity:0;
+  transform:translate3d(0,18px,0);
+  transition:
+    opacity .62s cubic-bezier(.22,1,.36,1),
+    transform .62s cubic-bezier(.22,1,.36,1)!important;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translate3d(0,0,0);
+}
+.delay{transition-delay:.06s}
+.server-card,.retired-card,.individual-icon,.contact-actions a,.pill,.discord-presence{
+  transition-duration:.28s!important;
+}
+@media(max-width:650px){
+  .hero-main .discord-presence{margin-bottom:22px}
+  .individual-icon{min-height:132px!important;padding:14px!important}
+  .individual-icon img{width:min(100px,82%)!important;max-height:100px!important}
+}
