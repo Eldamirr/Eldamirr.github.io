@@ -36,13 +36,6 @@ if(reduced){
   setTimeout(()=>{p=100},1250);
 }
 
-let lenis=null;
-if(!reduced && window.Lenis){
-  lenis=new Lenis({duration:.85,wheelMultiplier:.9,touchMultiplier:1,smoothWheel:true});
-  const raf=time=>{lenis.raf(time);requestAnimationFrame(raf)};
-  requestAnimationFrame(raf);
-}
-
 const revealObserver=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
@@ -100,27 +93,12 @@ function setMenu(open){
   mobileMenu?.classList.toggle("open",open);
   mobileMenu?.setAttribute("aria-hidden",String(!open));
   document.body.classList.toggle("menu-open",open);
-  if(lenis) open?lenis.stop():lenis.start();
 }
 toggle?.addEventListener("click",()=>setMenu(!toggle.classList.contains("active")));
 $$(".mobile-menu a").forEach(a=>a.addEventListener("click",()=>setMenu(false)));
 addEventListener("resize",()=>{if(innerWidth>900)setMenu(false)},{passive:true});
 
-if(!reduced && matchMedia("(pointer:fine)").matches){
-  addEventListener("pointermove",e=>{
-    document.body.style.setProperty("--pointer-x",e.clientX+"px");
-    document.body.style.setProperty("--pointer-y",e.clientY+"px");
-  },{passive:true});
-
-  const heroCard=$(".big-project");
-  heroCard?.addEventListener("pointermove",e=>{
-    const r=heroCard.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5;
-    const y=(e.clientY-r.top)/r.height-.5;
-    heroCard.style.transform=`perspective(900px) rotateX(${-y*2}deg) rotateY(${x*2.5}deg) translateY(-3px)`;
-  });
-  heroCard?.addEventListener("pointerleave",()=>heroCard.style.transform="");
-}
+$(".current-grid .server-card").forEach(card=>card.setAttribute("draggable","false"));
 
 const discordId="1019613116209823874";
 const avatar=$("#discord-avatar");
@@ -137,7 +115,7 @@ async function updateDiscordPresence(){
     const json=await res.json();
     const d=json.data;
     const user=d.discord_user||{};
-    if(discordName) discordName.textContent=user.global_name||user.display_name||user.username||"caesrov";
+    if(discordName) discordName.textContent=user.username?"@"+user.username:"@caesrov";
     if(avatar && user.avatar){
       avatar.src=`https://cdn.discordapp.com/avatars/${discordId}/${user.avatar}.webp?size=128`;
     }
@@ -145,7 +123,7 @@ async function updateDiscordPresence(){
     if(statusText) statusText.textContent=statusLabels[state]||"Offline";
     if(statusDot) statusDot.className=state;
   }catch{
-    if(statusText) statusText.textContent="Status unavailable";
+    if(statusText) statusText.textContent="Join Lanyard to enable live status";
     if(statusDot) statusDot.className="offline";
   }
 }
