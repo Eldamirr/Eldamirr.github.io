@@ -18,22 +18,17 @@ if(reduced){
   finishIntro();
 }else{
   let p=0;
-  const stages=[
-    [0,"INITIALIZING"],
-    [28,"LOADING ASSETS"],
-    [58,"BUILDING INTERFACE"],
-    [82,"FINALIZING"]
-  ];
+  const stages=[[0,"INITIALIZING"],[28,"LOADING ASSETS"],[58,"BUILDING INTERFACE"],[82,"FINALIZING"]];
   const timer=setInterval(()=>{
     p=Math.min(100,p+Math.max(2,Math.round((100-p)*.11)));
-    introCount.textContent=p+"%";
-    introBar.style.width=p+"%";
+    if(introCount) introCount.textContent=p+"%";
+    if(introBar) introBar.style.width=p+"%";
     let label=stages[0][1];
     for(const [n,t] of stages) if(p>=n) label=t;
-    introStatus.textContent=label;
+    if(introStatus) introStatus.textContent=label;
     if(p>=100){
       clearInterval(timer);
-      introStatus.textContent="READY";
+      if(introStatus) introStatus.textContent="READY";
       setTimeout(finishIntro,180);
     }
   },38);
@@ -43,16 +38,8 @@ if(reduced){
 
 let lenis=null;
 if(!reduced && window.Lenis){
-  lenis=new Lenis({
-    duration:.88,
-    wheelMultiplier:.9,
-    touchMultiplier:1,
-    smoothWheel:true
-  });
-  const raf=time=>{
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  };
+  lenis=new Lenis({duration:.85,wheelMultiplier:.9,touchMultiplier:1,smoothWheel:true});
+  const raf=time=>{lenis.raf(time);requestAnimationFrame(raf)};
   requestAnimationFrame(raf);
 }
 
@@ -77,13 +64,12 @@ function animateCounter(el){
   const tick=now=>{
     const t=Math.min(1,(now-start)/duration);
     const eased=1-Math.pow(1-t,3);
-    const current=Math.round(target*eased);
-    if(el.textContent!==current+suffix) el.textContent=current+suffix;
+    const value=Math.round(target*eased)+suffix;
+    if(el.textContent!==value)el.textContent=value;
     if(t<1)requestAnimationFrame(tick);
   };
   requestAnimationFrame(tick);
 }
-
 const countObserver=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
@@ -98,65 +84,13 @@ const progress=$("#scroll-progress-bar");
 let scrollTick=false;
 function updateScroll(){
   const max=document.documentElement.scrollHeight-innerHeight;
-  progress.style.width=(max>0?scrollY/max*100:0)+"%";
+  if(progress) progress.style.width=(max>0?scrollY/max*100:0)+"%";
   scrollTick=false;
 }
 addEventListener("scroll",()=>{
-  if(!scrollTick){
-    scrollTick=true;
-    requestAnimationFrame(updateScroll);
-  }
+  if(!scrollTick){scrollTick=true;requestAnimationFrame(updateScroll)}
 },{passive:true});
 updateScroll();
-
-const slider=$("#card-slider");
-const sliderBar=$("#slider-progress-bar");
-const prev=$(".slider-prev");
-const next=$(".slider-next");
-
-function updateSlider(){
-  if(!slider||!sliderBar)return;
-  const max=slider.scrollWidth-slider.clientWidth;
-  const ratio=max>0?slider.scrollLeft/max:0;
-  const visible=Math.min(1,slider.clientWidth/slider.scrollWidth);
-  sliderBar.style.width=(visible*100+ratio*(100-visible*100))+"%";
-}
-
-function cardStep(){
-  const card=$(".server-card",slider);
-  return card?card.getBoundingClientRect().width+14:420;
-}
-prev?.addEventListener("click",()=>slider.scrollBy({left:-cardStep(),behavior:"smooth"}));
-next?.addEventListener("click",()=>slider.scrollBy({left:cardStep(),behavior:"smooth"}));
-slider?.addEventListener("scroll",()=>requestAnimationFrame(updateSlider),{passive:true});
-addEventListener("resize",updateSlider,{passive:true});
-updateSlider();
-
-if(slider){
-  let down=false,startX=0,startScroll=0,moved=false;
-  slider.addEventListener("pointerdown",e=>{
-    if(e.pointerType==="mouse"){
-      down=true;moved=false;startX=e.clientX;startScroll=slider.scrollLeft;
-      slider.classList.add("dragging");
-      slider.setPointerCapture(e.pointerId);
-    }
-  });
-  slider.addEventListener("pointermove",e=>{
-    if(!down)return;
-    const dx=e.clientX-startX;
-    if(Math.abs(dx)>4)moved=true;
-    slider.scrollLeft=startScroll-dx;
-  });
-  const endDrag=()=>{
-    down=false;
-    slider.classList.remove("dragging");
-  };
-  slider.addEventListener("pointerup",endDrag);
-  slider.addEventListener("pointercancel",endDrag);
-  slider.addEventListener("click",e=>{
-    if(moved){e.preventDefault();e.stopPropagation();moved=false}
-  },true);
-}
 
 const toggle=$(".menu-toggle");
 const mobileMenu=$("#mobile-menu");
@@ -183,10 +117,41 @@ if(!reduced && matchMedia("(pointer:fine)").matches){
     const r=heroCard.getBoundingClientRect();
     const x=(e.clientX-r.left)/r.width-.5;
     const y=(e.clientY-r.top)/r.height-.5;
-    heroCard.style.transform=`perspective(900px) rotateX(${-y*2.4}deg) rotateY(${x*3}deg) translateY(-3px)`;
+    heroCard.style.transform=`perspective(900px) rotateX(${-y*2}deg) rotateY(${x*2.5}deg) translateY(-3px)`;
   });
   heroCard?.addEventListener("pointerleave",()=>heroCard.style.transform="");
 }
+
+const discordId="1019613116209823874";
+const avatar=$("#discord-avatar");
+const discordName=$("#discord-name");
+const statusDot=$("#discord-status-dot");
+const statusText=$("#discord-status-text");
+const statusLabels={online:"Online",idle:"Idle",dnd:"Do Not Disturb",offline:"Offline"};
+
+async function updateDiscordPresence(){
+  if(document.hidden)return;
+  try{
+    const res=await fetch("https://api.lanyard.rest/v1/users/"+discordId,{cache:"no-store"});
+    if(!res.ok)throw new Error("presence");
+    const json=await res.json();
+    const d=json.data;
+    const user=d.discord_user||{};
+    if(discordName) discordName.textContent=user.global_name||user.display_name||user.username||"caesrov";
+    if(avatar && user.avatar){
+      avatar.src=`https://cdn.discordapp.com/avatars/${discordId}/${user.avatar}.webp?size=128`;
+    }
+    const state=d.discord_status||"offline";
+    if(statusText) statusText.textContent=statusLabels[state]||"Offline";
+    if(statusDot) statusDot.className=state;
+  }catch{
+    if(statusText) statusText.textContent="Status unavailable";
+    if(statusDot) statusDot.className="offline";
+  }
+}
+updateDiscordPresence();
+setInterval(updateDiscordPresence,60000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)updateDiscordPresence()});
 
 if(new URLSearchParams(location.search).get("sent")==="1"){
   const note=document.createElement("div");
