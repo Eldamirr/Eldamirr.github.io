@@ -1092,3 +1092,9 @@ body.ready .discord-presence{
     max-height:132px!important;
   }
 }
+
+
+/* emergency mobile stability: remove all blocking intro behavior */
+.page-intro{display:none!important}
+body{min-height:100vh}
+main{display:block!important;visibility:visible!important;opacity:1!important}
