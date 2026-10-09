@@ -837,3 +837,110 @@ html{scroll-behavior:smooth}
   .individual-icon{min-height:132px!important;padding:14px!important}
   .individual-icon img{width:min(100px,82%)!important;max-height:100px!important}
 }
+
+
+/* Space-inspired animation pass — lightweight, no scroll-jacking */
+:root{--motion:cubic-bezier(.16,1,.3,1)}
+.page-intro{will-change:transform}
+.page-intro.done{transition:transform .78s var(--motion),visibility .78s}
+.intro-inner{transform:translateY(0);transition:transform .7s var(--motion),opacity .45s ease}
+.page-intro.done .intro-inner{transform:translateY(-18px);opacity:0}
+
+.hero-main{overflow:visible}
+.hero-reveal{
+  opacity:0;
+  transform:translateY(26px);
+}
+body.ready .hero-reveal{
+  animation:heroRise .82s var(--motion) forwards;
+}
+body.ready .hero-main .hero-reveal:nth-of-type(1){animation-delay:.08s}
+body.ready .hero-main h1.hero-reveal{animation-delay:.14s}
+body.ready .hero-main .hero-text.hero-reveal{animation-delay:.22s}
+body.ready .hero-main .hero-links.hero-reveal{animation-delay:.30s}
+body.ready .hero-main .scroll-cue.hero-reveal{animation-delay:.38s}
+body.ready .discord-presence{
+  animation:heroRise .72s .03s var(--motion) both;
+}
+@keyframes heroRise{
+  from{opacity:0;transform:translateY(26px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:
+    opacity .72s var(--motion),
+    transform .72s var(--motion);
+  transition-delay:var(--d,0ms)!important;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.section-title h2,.about-lead h2,.icon-copy h2,.contact h2{
+  overflow:hidden;
+}
+.section-title.visible h2,.about-lead.visible h2,.icon-copy.visible h2,.contact.visible h2{
+  animation:titleSettle .8s var(--motion) both;
+}
+@keyframes titleSettle{
+  from{letter-spacing:-.09em;filter:blur(4px);opacity:.25}
+  to{letter-spacing:-.067em;filter:blur(0);opacity:1}
+}
+
+.stat strong{
+  transform-origin:left bottom;
+}
+.stat.visible strong{
+  animation:numberPop .7s .08s var(--motion) both;
+}
+@keyframes numberPop{
+  from{opacity:.2;transform:translateY(14px) scale(.96)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.server-card{
+  transform:translateZ(0);
+}
+.server-card.visible{
+  animation:cardSettle .75s var(--motion) both;
+}
+@keyframes cardSettle{
+  from{opacity:.2;transform:translateY(24px) scale(.985)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.individual-icon{
+  opacity:1!important;
+  visibility:visible!important;
+}
+.individual-icon img{
+  display:block!important;
+  opacity:1!important;
+  visibility:visible!important;
+  width:min(118px,82%)!important;
+  max-height:118px!important;
+}
+.individual-icon-grid .individual-icon:nth-child(7),
+.individual-icon-grid .individual-icon:nth-child(8){
+  border-color:rgba(205,184,255,.18);
+  background:rgba(205,184,255,.025);
+}
+
+.marquee-track{
+  animation-timing-function:linear!important;
+  will-change:transform;
+}
+.scroll-progress i{transition:width .08s linear}
+
+@media(max-width:650px){
+  .reveal{transform:translateY(20px)}
+  .server-card.visible{animation:none}
+  .individual-icon img{width:min(104px,84%)!important;max-height:104px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-reveal,.reveal{opacity:1!important;transform:none!important;animation:none!important}
+}
