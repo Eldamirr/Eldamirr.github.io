@@ -972,3 +972,14 @@ body.ready .discord-presence{
     transform:none;
   }
 }
+
+
+/* hard stability reset: content is always visible even if JS fails */
+.page-intro{display:none!important}
+.reveal,
+.reveal:not(.visible),
+.hero-reveal{
+  opacity:1!important;
+  transform:none!important;
+  animation:none!important;
+}
