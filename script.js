@@ -61,22 +61,6 @@ if("IntersectionObserver" in window){
   $$("[data-count]").forEach(animateCounter);
 }
 
-// Scroll progress
-const progress=$("#scroll-progress-bar");
-let ticking=false;
-function updateProgress(){
-  const max=document.documentElement.scrollHeight-innerHeight;
-  if(progress) progress.style.width=(max>0?scrollY/max*100:0)+"%";
-  ticking=false;
-}
-addEventListener("scroll",()=>{
-  if(!ticking){
-    ticking=true;
-    requestAnimationFrame(updateProgress);
-  }
-},{passive:true});
-updateProgress();
-
 // Mobile menu
 const toggle=$(".menu-toggle");
 const menu=$("#mobile-menu");
@@ -117,7 +101,7 @@ async function updateDiscordPresence(){
     if(statusText)statusText.textContent=statusLabels[state]||"Offline";
     if(statusDot)statusDot.className=state;
   }catch{
-    if(statusText)statusText.textContent="Status unavailable";
+    if(statusText)statusText.textContent="Connect Lanyard for live status";
     if(statusDot)statusDot.className="offline";
   }
 }
