@@ -104,7 +104,7 @@ toggle?.addEventListener("click",()=>setMenu(!toggle.classList.contains("active"
 $$(".mobile-menu a").forEach(a=>a.addEventListener("click",()=>setMenu(false)));
 addEventListener("resize",()=>{if(innerWidth>900)setMenu(false)},{passive:true});
 
-$(".current-grid .server-card").forEach(card=>card.setAttribute("draggable","false"));
+$$(".current-grid .server-card").forEach(card=>card.setAttribute("draggable","false"));
 
 const discordId="1019613116209823874";
 const avatar=$("#discord-avatar");
