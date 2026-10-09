@@ -44,7 +44,13 @@ const revealObserver=new IntersectionObserver(entries=>{
     }
   });
 },{threshold:.1,rootMargin:"0px 0px -6% 0px"});
-$$(".reveal").forEach(el=>revealObserver.observe(el));
+$(".reveal").forEach((el,index)=>{
+  const group=el.parentElement;
+  const siblings=group ? [...group.children].filter(x=>x.classList?.contains("reveal")) : [];
+  const localIndex=Math.max(0,siblings.indexOf(el));
+  el.style.setProperty("--d",Math.min(localIndex*55,220)+"ms");
+  revealObserver.observe(el);
+});
 
 function animateCounter(el){
   if(el.dataset.done)return;
@@ -106,6 +112,7 @@ const discordName=$("#discord-name");
 const statusDot=$("#discord-status-dot");
 const statusText=$("#discord-status-text");
 const statusLabels={online:"Online",idle:"Idle",dnd:"Do Not Disturb",offline:"Offline"};
+avatar?.addEventListener("error",()=>{avatar.src="https://cdn.discordapp.com/embed/avatars/0.png"},{once:true});
 
 async function updateDiscordPresence(){
   if(document.hidden)return;
