@@ -944,3 +944,19 @@ body.ready .discord-presence{
 @media(prefers-reduced-motion:reduce){
   .hero-reveal,.reveal{opacity:1!important;transform:none!important;animation:none!important}
 }
+
+
+/* fail-safe: never let the loading curtain trap the site */
+.page-intro{
+  animation:introFailsafe .01s 4s forwards;
+}
+.page-intro.done{
+  animation:none;
+}
+@keyframes introFailsafe{
+  to{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+}
