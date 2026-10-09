@@ -1207,3 +1207,46 @@ main{display:block!important;visibility:visible!important;opacity:1!important}
   .eldamir-loader{animation-duration:.01ms;animation-delay:.15s}
   .eldamir-loader-center,.loader-domain i,.loader-progress i{animation:none!important}
 }
+
+
+/* remove top scroll meter completely */
+.scroll-progress{display:none!important}
+
+/* force newest two icon images to render visibly */
+.individual-icon.final-icon{
+  display:grid!important;
+  place-items:center!important;
+  min-height:170px!important;
+  border-color:rgba(205,184,255,.22)!important;
+  background:rgba(205,184,255,.035)!important;
+}
+.individual-icon.final-icon img{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  width:150px!important;
+  height:150px!important;
+  max-width:92%!important;
+  max-height:150px!important;
+  object-fit:contain!important;
+  transform:none!important;
+  filter:none!important;
+}
+@media(max-width:650px){
+  .individual-icon.final-icon{min-height:150px!important}
+  .individual-icon.final-icon img{
+    width:130px!important;
+    height:130px!important;
+    max-height:130px!important;
+  }
+}
+
+/* Discord profile pill: clearer and always present */
+.hero-main .discord-presence{
+  display:flex!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
+.avatar-wrap #discord-status-dot{
+  z-index:2;
+}
