@@ -44,7 +44,7 @@ const revealObserver=new IntersectionObserver(entries=>{
     }
   });
 },{threshold:.1,rootMargin:"0px 0px -6% 0px"});
-$(".reveal").forEach((el,index)=>{
+$$(".reveal").forEach((el,index)=>{
   const group=el.parentElement;
   const siblings=group ? [...group.children].filter(x=>x.classList?.contains("reveal")) : [];
   const localIndex=Math.max(0,siblings.indexOf(el));
