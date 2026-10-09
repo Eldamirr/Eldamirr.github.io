@@ -1077,3 +1077,18 @@ body.ready .discord-presence{
     transition:none!important;
   }
 }
+
+
+/* enlarge the two newest icon artworks */
+.individual-icon-grid .individual-icon:nth-child(7) img,
+.individual-icon-grid .individual-icon:nth-child(8) img{
+  width:min(154px,94%)!important;
+  max-height:154px!important;
+}
+@media(max-width:650px){
+  .individual-icon-grid .individual-icon:nth-child(7) img,
+  .individual-icon-grid .individual-icon:nth-child(8) img{
+    width:min(132px,94%)!important;
+    max-height:132px!important;
+  }
+}
