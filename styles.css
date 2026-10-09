@@ -960,3 +960,15 @@ body.ready .discord-presence{
     pointer-events:none;
   }
 }
+
+
+/* absolute visibility fail-safe */
+.reveal:not(.visible){
+  animation:revealFailsafe .01s 3s forwards;
+}
+@keyframes revealFailsafe{
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
