@@ -6,35 +6,28 @@ if(year) year.textContent=new Date().getFullYear();
 
 const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// Lightweight scroll-in motion. Elements remain visible if JS fails.
+// Scroll reveal: enable hidden states only after the observer is successfully created.
 if(!reduced && "IntersectionObserver" in window){
-  const seen=new WeakSet();
-  const io=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting && !seen.has(entry.target)){
-        seen.add(entry.target);
-        entry.target.animate(
-          [
-            {opacity:.35,transform:"translateY(18px)"},
-            {opacity:1,transform:"translateY(0)"}
-          ],
-          {duration:620,easing:"cubic-bezier(.16,1,.3,1)",fill:"both"}
-        );
-        io.unobserve(entry.target);
-      }
-    });
-  },{threshold:.08,rootMargin:"0px 0px -5% 0px"});
-  $$(".reveal").forEach(el=>io.observe(el));
+  try{
+    const revealObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },{threshold:.10,rootMargin:"0px 0px -7% 0px"});
 
-  $$(".hero-reveal,.discord-presence,.big-project").forEach((el,index)=>{
-    el.animate(
-      [
-        {opacity:.25,transform:"translateY(20px)"},
-        {opacity:1,transform:"translateY(0)"}
-      ],
-      {duration:700,delay:80+index*70,easing:"cubic-bezier(.16,1,.3,1)",fill:"both"}
-    );
-  });
+    $$(".reveal").forEach(el=>revealObserver.observe(el));
+    document.documentElement.classList.add("motion-ready");
+
+    requestAnimationFrame(()=>{
+      $$(".hero-reveal").forEach(el=>el.classList.add("hero-visible"));
+      $(".discord-presence")?.classList.add("visible");
+    });
+  }catch(e){
+    document.documentElement.classList.remove("motion-ready");
+  }
 }
 
 // Counters
@@ -45,7 +38,7 @@ function animateCounter(el){
   const suffix=el.dataset.suffix||"";
   if(reduced){el.textContent=target+suffix;return}
   const start=performance.now();
-  const duration=1000;
+  const duration=1050;
   const frame=now=>{
     const t=Math.min(1,(now-start)/duration);
     const e=1-Math.pow(1-t,3);
@@ -55,15 +48,15 @@ function animateCounter(el){
   requestAnimationFrame(frame);
 }
 if("IntersectionObserver" in window){
-  const cio=new IntersectionObserver(entries=>{
+  const counterObserver=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
       if(entry.isIntersecting){
         animateCounter(entry.target);
-        cio.unobserve(entry.target);
+        counterObserver.unobserve(entry.target);
       }
     });
-  },{threshold:.4});
-  $$("[data-count]").forEach(el=>cio.observe(el));
+  },{threshold:.45});
+  $$("[data-count]").forEach(el=>counterObserver.observe(el));
 }else{
   $$("[data-count]").forEach(animateCounter);
 }
@@ -71,15 +64,18 @@ if("IntersectionObserver" in window){
 // Scroll progress
 const progress=$("#scroll-progress-bar");
 let ticking=false;
-function paintProgress(){
+function updateProgress(){
   const max=document.documentElement.scrollHeight-innerHeight;
   if(progress) progress.style.width=(max>0?scrollY/max*100:0)+"%";
   ticking=false;
 }
 addEventListener("scroll",()=>{
-  if(!ticking){ticking=true;requestAnimationFrame(paintProgress)}
+  if(!ticking){
+    ticking=true;
+    requestAnimationFrame(updateProgress);
+  }
 },{passive:true});
-paintProgress();
+updateProgress();
 
 // Mobile menu
 const toggle=$(".menu-toggle");
@@ -93,7 +89,6 @@ function setMenu(open){
 }
 toggle?.addEventListener("click",()=>setMenu(!toggle.classList.contains("active")));
 $$(".mobile-menu a").forEach(a=>a.addEventListener("click",()=>setMenu(false)));
-
 $$(".current-grid .server-card").forEach(card=>card.setAttribute("draggable","false"));
 
 // Discord presence
@@ -102,34 +97,33 @@ const avatar=$("#discord-avatar");
 const statusDot=$("#discord-status-dot");
 const statusText=$("#discord-status-text");
 const discordName=$("#discord-name");
-const labels={online:"Online",idle:"Idle",dnd:"Do Not Disturb",offline:"Offline"};
+const statusLabels={online:"Online",idle:"Idle",dnd:"Do Not Disturb",offline:"Offline"};
 
-async function updatePresence(){
+async function updateDiscordPresence(){
   if(document.hidden)return;
   try{
     const res=await fetch("https://api.lanyard.rest/v1/users/"+discordId,{cache:"no-store"});
-    if(!res.ok)throw new Error();
+    if(!res.ok)throw new Error("presence");
     const payload=await res.json();
-    if(!payload?.success || !payload?.data)throw new Error();
+    if(!payload?.success||!payload?.data)throw new Error("presence");
     const d=payload.data;
-    const u=d.discord_user||{};
+    const user=d.discord_user||{};
     if(discordName)discordName.textContent="@caesrov";
-    if(avatar && u.avatar){
-      const ext=u.avatar.startsWith("a_")?"gif":"webp";
-      avatar.src="https://cdn.discordapp.com/avatars/"+discordId+"/"+u.avatar+"."+ext+"?size=128";
+    if(avatar&&user.avatar){
+      const ext=user.avatar.startsWith("a_")?"gif":"webp";
+      avatar.src="https://cdn.discordapp.com/avatars/"+discordId+"/"+user.avatar+"."+ext+"?size=128";
     }
     const state=d.discord_status||"offline";
-    if(statusText)statusText.textContent=labels[state]||"Offline";
+    if(statusText)statusText.textContent=statusLabels[state]||"Offline";
     if(statusDot)statusDot.className=state;
   }catch{
-    if(discordName)discordName.textContent="@caesrov";
     if(statusText)statusText.textContent="Status unavailable";
     if(statusDot)statusDot.className="offline";
   }
 }
-updatePresence();
-setInterval(updatePresence,30000);
-document.addEventListener("visibilitychange",()=>{if(!document.hidden)updatePresence()});
+updateDiscordPresence();
+setInterval(updateDiscordPresence,30000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)updateDiscordPresence()});
 
 // Form success
 if(new URLSearchParams(location.search).get("sent")==="1"){
