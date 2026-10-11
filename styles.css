@@ -1379,3 +1379,154 @@ main{display:block!important;visibility:visible!important;opacity:1!important}
   .individual-icon img{width:100px!important;height:100px!important;max-height:100px!important}
   .individual-icon.featured-icon img{width:126px!important;height:126px!important;max-height:126px!important}
 }
+
+
+/* Space feedback pass — 2026-10-12 */
+
+/* thinner blurred top bar */
+.topbar{
+  background:rgba(9,7,14,.62)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(125%)!important;
+  backdrop-filter:blur(18px) saturate(125%)!important;
+  border-bottom:1px solid rgba(255,255,255,.055)!important;
+}
+.nav{height:64px!important}
+.brand{font-size:22px!important}
+.navlinks{font-size:12px!important}
+
+/* impact numbers: same width, left-to-right */
+.space-stats{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  margin-top:38px!important;
+  border-top:1px solid rgba(255,255,255,.10)!important;
+}
+.space-stats .stat{
+  min-height:205px!important;
+  padding:38px 26px 34px!important;
+  border-left:1px solid rgba(255,255,255,.10)!important;
+  border-bottom:1px solid rgba(255,255,255,.10)!important;
+}
+.space-stats .stat:first-child{border-left:0!important}
+.space-stats .stat:nth-child(odd),
+.space-stats .stat:nth-child(even){padding-left:26px!important;padding-right:26px!important}
+.space-stats .stat strong{
+  font-size:clamp(52px,5.4vw,76px)!important;
+}
+.space-stats .stat span{
+  max-width:210px!important;
+  margin-top:20px!important;
+  font-size:13px!important;
+  line-height:1.45!important;
+}
+
+/* a little rounder like the feedback */
+.skills-grid{
+  border-radius:28px!important;
+  overflow:hidden!important;
+}
+.skills-grid div{
+  min-height:146px!important;
+}
+
+/* compact active community section with View All */
+.compact-current .server-card:nth-child(n+5){
+  display:none!important;
+}
+.compact-current.is-expanded .server-card{
+  display:flex!important;
+}
+.communities-view-all{
+  margin:18px auto 0;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:11px 16px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:999px;
+  background:rgba(255,255,255,.025);
+  color:var(--muted);
+  font:inherit;
+  font-size:12px;
+  cursor:pointer;
+  transition:.25s ease;
+}
+.communities-view-all:hover{
+  border-color:rgba(205,184,255,.28);
+  color:#fff;
+  transform:translateY(-2px);
+}
+.communities-view-all span{color:var(--lav)}
+.current-group{text-align:center}
+.current-group .group-head,.current-group .current-grid{text-align:left}
+.current-grid .server-card{min-height:320px!important}
+
+/* member counts should read immediately */
+.member-count{
+  display:flex!important;
+  align-items:baseline;
+  gap:7px;
+  color:var(--muted)!important;
+  font-size:12px!important;
+}
+.member-count b{
+  color:var(--text);
+  font-size:22px;
+  line-height:1;
+  letter-spacing:-.04em;
+}
+
+/* contact: text is no longer inside a second background box */
+.contact-hero{
+  overflow:visible!important;
+  border:0!important;
+  border-radius:0!important;
+  padding:0!important;
+  background:none!important;
+}
+.contact-hero::before{display:none!important}
+.contact h2{
+  font-size:clamp(52px,7vw,82px)!important;
+  line-height:.93!important;
+  max-width:850px;
+}
+.contact h2 span{display:inline-block;margin-left:.08em}
+.contact-hero>p{
+  max-width:620px!important;
+  margin-top:22px!important;
+}
+.work-form{
+  margin-top:38px!important;
+  border-radius:28px!important;
+  padding:28px!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.018))!important;
+}
+.contact-actions{
+  margin-top:18px!important;
+}
+
+/* keep equal stat proportions on mobile, like the screenshot */
+@media(max-width:900px){
+  .space-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .space-stats .stat:nth-child(3){border-left:0!important}
+}
+@media(max-width:650px){
+  .topbar{-webkit-backdrop-filter:blur(16px) saturate(120%)!important;backdrop-filter:blur(16px) saturate(120%)!important}
+  .nav{height:60px!important}
+  .space-stats{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    margin-top:30px!important;
+  }
+  .space-stats .stat{
+    min-height:180px!important;
+    padding:28px 18px 26px!important;
+  }
+  .space-stats .stat:nth-child(odd),
+  .space-stats .stat:nth-child(even){padding-left:18px!important;padding-right:18px!important}
+  .space-stats .stat strong{font-size:clamp(46px,13vw,64px)!important}
+  .space-stats .stat span{font-size:12px!important;margin-top:16px!important}
+  .current-grid .server-card{min-height:0!important}
+  .compact-current .server-card:nth-child(n+4){display:none!important}
+  .compact-current.is-expanded .server-card{display:flex!important}
+  .contact h2{font-size:48px!important;line-height:.96!important}
+  .work-form{padding:20px!important;border-radius:24px!important}
+}
