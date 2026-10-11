@@ -1777,3 +1777,34 @@ main{display:block!important;visibility:visible!important;opacity:1!important}
     line-height:1.35!important;
   }
 }
+
+
+/* Mobile fit pass: keep one straight row without crowding */
+@media(max-width:650px){
+  .space-stats{
+    width:calc(100% - 28px)!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  }
+  .space-stats .stat{
+    min-height:136px!important;
+    padding:22px 7px 20px!important;
+  }
+  .space-stats .stat strong{
+    font-size:clamp(24px,8vw,34px)!important;
+    letter-spacing:-.055em!important;
+  }
+  .space-stats .stat span{
+    margin-top:13px!important;
+    font-size:8.5px!important;
+    line-height:1.28!important;
+    max-width:100%!important;
+  }
+}
+@media(max-width:390px){
+  .space-stats .stat strong{
+    font-size:clamp(22px,7.5vw,30px)!important;
+  }
+  .space-stats .stat span{
+    font-size:8px!important;
+  }
+}
