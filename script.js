@@ -117,3 +117,13 @@ if(new URLSearchParams(location.search).get("sent")==="1"){
   document.body.appendChild(note);
   setTimeout(()=>note.remove(),4200);
 }
+
+
+// Active communities: keep the page compact until requested.
+const viewAllCommunities=$("#communities-view-all");
+const compactCommunities=$(".compact-current");
+viewAllCommunities?.addEventListener("click",()=>{
+  const expanded=compactCommunities?.classList.toggle("is-expanded");
+  viewAllCommunities.setAttribute("aria-expanded",String(Boolean(expanded)));
+  viewAllCommunities.innerHTML=expanded?'Show less <span>↑</span>':'View all communities <span>↓</span>';
+});
