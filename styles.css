@@ -1592,3 +1592,53 @@ main{display:block!important;visibility:visible!important;opacity:1!important}
     line-height:1.35!important;
   }
 }
+
+
+/* FINAL stats sizing/layout to match Space more closely */
+.space-stats{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  width:min(100% - 44px,1180px)!important;
+  margin:38px auto 0!important;
+}
+.space-stats .stat{
+  min-height:220px!important;
+  padding:42px 30px 34px!important;
+}
+.space-stats .stat strong{
+  font-size:clamp(58px,5.8vw,84px)!important;
+  line-height:.9!important;
+}
+.space-stats .stat span{
+  margin-top:24px!important;
+  max-width:220px!important;
+  font-size:14px!important;
+  line-height:1.48!important;
+}
+
+/* Space's phone layout is a large 2x2 grid, not four tiny columns */
+@media(max-width:650px){
+  .space-stats{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    width:calc(100% - 32px)!important;
+    margin-top:30px!important;
+  }
+  .space-stats .stat{
+    min-height:245px!important;
+    padding:38px 22px 32px!important;
+    border-left:1px solid rgba(255,255,255,.10)!important;
+    border-bottom:1px solid rgba(255,255,255,.10)!important;
+  }
+  .space-stats .stat:nth-child(odd){
+    border-left:0!important;
+  }
+  .space-stats .stat strong{
+    font-size:clamp(58px,15vw,78px)!important;
+    white-space:nowrap!important;
+  }
+  .space-stats .stat span{
+    margin-top:26px!important;
+    max-width:170px!important;
+    font-size:15px!important;
+    line-height:1.5!important;
+  }
+}
