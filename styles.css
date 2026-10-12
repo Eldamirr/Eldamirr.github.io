@@ -1912,3 +1912,13 @@ main{display:block!important;visibility:visible!important;opacity:1!important}
   }
   .contact-actions{gap:14px 20px!important}
 }
+
+
+/* live Discord presence status */
+#discord-status-dot.online{background:#23a55a!important}
+#discord-status-dot.idle{background:#f0b232!important}
+#discord-status-dot.dnd{background:#f23f43!important}
+#discord-status-dot.offline{background:#80848e!important}
+#discord-status-dot{
+  box-shadow:0 0 0 2px #09070e!important;
+}
