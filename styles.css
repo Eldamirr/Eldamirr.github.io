@@ -2085,3 +2085,50 @@ main{display:block!important;visibility:visible!important;opacity:1!important}
     justify-self:center!important;
   }
 }
+
+
+/* exact 8-icon gallery */
+.individual-icon-grid.latest-eight{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:14px!important;
+}
+.individual-icon-grid.latest-eight .individual-icon{
+  min-height:170px!important;
+  display:grid!important;
+  place-items:center!important;
+}
+.individual-icon-grid.latest-eight .individual-icon img{
+  width:132px!important;
+  height:132px!important;
+  max-width:92%!important;
+  max-height:132px!important;
+  object-fit:contain!important;
+  image-rendering:auto!important;
+  filter:none!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
+.individual-icon-grid.latest-eight .featured-icon img{
+  width:146px!important;
+  height:146px!important;
+  max-height:146px!important;
+}
+@media(max-width:650px){
+  .individual-icon-grid.latest-eight{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:10px!important;
+  }
+  .individual-icon-grid.latest-eight .individual-icon{
+    min-height:145px!important;
+  }
+  .individual-icon-grid.latest-eight .individual-icon img{
+    width:112px!important;
+    height:112px!important;
+    max-height:112px!important;
+  }
+  .individual-icon-grid.latest-eight .featured-icon img{
+    width:124px!important;
+    height:124px!important;
+    max-height:124px!important;
+  }
+}
