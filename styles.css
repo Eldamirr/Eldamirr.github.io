@@ -2054,3 +2054,34 @@ main{display:block!important;visibility:visible!important;opacity:1!important}
     max-height:124px!important;
   }
 }
+
+
+/* final 7-icon gallery: no duplicate swan, exact Gojo + Sukuna */
+.individual-icon-grid.latest-seven{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:14px!important;
+}
+.individual-icon-grid.latest-seven .individual-icon:nth-child(6){
+  grid-column:2!important;
+}
+.individual-icon-grid.latest-seven .individual-icon:nth-child(7){
+  grid-column:3!important;
+}
+.individual-icon-grid.latest-seven .individual-icon img{
+  image-rendering:auto!important;
+  filter:none!important;
+  object-fit:contain!important;
+}
+@media(max-width:650px){
+  .individual-icon-grid.latest-seven{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  .individual-icon-grid.latest-seven .individual-icon:nth-child(6){
+    grid-column:auto!important;
+  }
+  .individual-icon-grid.latest-seven .individual-icon:nth-child(7){
+    grid-column:1 / -1!important;
+    width:calc(50% - 5px)!important;
+    justify-self:center!important;
+  }
+}
