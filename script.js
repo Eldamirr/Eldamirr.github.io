@@ -75,7 +75,7 @@ toggle?.addEventListener("click",()=>setMenu(!toggle.classList.contains("active"
 $$(".mobile-menu a").forEach(a=>a.addEventListener("click",()=>setMenu(false)));
 $$(".current-grid .server-card").forEach(card=>card.setAttribute("draggable","false"));
 
-// Discord presence
+// Discord presence — live via Lanyard
 const discordId="1019613116209823874";
 const avatar=$("#discord-avatar");
 const statusDot=$("#discord-status-dot");
@@ -83,30 +83,53 @@ const statusText=$("#discord-status-text");
 const discordName=$("#discord-name");
 const statusLabels={online:"Online",idle:"Idle",dnd:"Do Not Disturb",offline:"Offline"};
 
+function setDiscordState(state){
+  const safe=statusLabels[state]?state:"offline";
+  if(statusText) statusText.textContent=statusLabels[safe];
+  if(statusDot){
+    statusDot.className="";
+    statusDot.classList.add(safe);
+  }
+}
+
+function setDiscordAvatar(user){
+  if(!avatar)return;
+  if(user?.avatar){
+    const ext=user.avatar.startsWith("a_")?"gif":"webp";
+    avatar.src="https://cdn.discordapp.com/avatars/"+discordId+"/"+user.avatar+"."+ext+"?size=256";
+  }else if(user?.discriminator && user.discriminator!=="0"){
+    const index=Number(user.discriminator)%5;
+    avatar.src="https://cdn.discordapp.com/embed/avatars/"+index+".png";
+  }
+}
+
 async function updateDiscordPresence(){
   if(document.hidden)return;
   try{
-    const res=await fetch("https://api.lanyard.rest/v1/users/"+discordId,{cache:"no-store"});
+    const res=await fetch("https://api.lanyard.rest/v1/users/"+discordId+"?t="+Date.now(),{
+      cache:"no-store",
+      headers:{accept:"application/json"}
+    });
     if(!res.ok)throw new Error("presence");
     const payload=await res.json();
     if(!payload?.success||!payload?.data)throw new Error("presence");
     const d=payload.data;
     const user=d.discord_user||{};
-    if(discordName)discordName.textContent="@caesrov";
-    if(avatar&&user.avatar){
-      const ext=user.avatar.startsWith("a_")?"gif":"webp";
-      avatar.src="https://cdn.discordapp.com/avatars/"+discordId+"/"+user.avatar+"."+ext+"?size=128";
-    }
-    const state=d.discord_status||"offline";
-    if(statusText)statusText.textContent=statusLabels[state]||"Offline";
-    if(statusDot)statusDot.className=state;
+    if(discordName) discordName.textContent="@caesrov";
+    setDiscordAvatar(user);
+    setDiscordState(d.discord_status||"offline");
   }catch{
-    if(statusText)statusText.textContent="Connect Lanyard for live status";
-    if(statusDot)statusDot.className="offline";
+    if(discordName) discordName.textContent="@caesrov";
+    if(statusText) statusText.textContent="Status unavailable";
+    if(statusDot){
+      statusDot.className="";
+      statusDot.classList.add("offline");
+    }
   }
 }
+
 updateDiscordPresence();
-setInterval(updateDiscordPresence,30000);
+setInterval(updateDiscordPresence,15000);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)updateDiscordPresence()});
 
 // Form success
